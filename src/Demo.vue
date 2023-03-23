@@ -5,7 +5,9 @@
       <tv-sidebar
         :is-list="demo.sidebarProps.isList"
         :is-image="demo.sidebarProps.isImage"
+        :is-label="demo.sidebarProps.isLabel"
         :data="demo"
+        @clickLabel="clickLabelDemo"
       />
     </div>
   </tv-demo>
@@ -25,6 +27,11 @@ export default {
   components: {
     TvSidebar,
     TvDemo,
+  },
+  methods: {
+    clickLabelDemo(label) {
+      console.log(label);
+    },
   },
 };
 </script>

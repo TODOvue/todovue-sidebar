@@ -30,11 +30,29 @@
           <img :src="data.image.src" :alt="data.image.name" />
         </template>
       </template>
+      <template v-if="isLabel">
+        <div class="sidebar-title">
+          <h1>{{ data.title }}</h1>
+          <div class="sidebar-title_separator"></div>
+        </div>
+        <div class="sidebar-content-label">
+          <tv-label
+            v-for="label in data.labels"
+            :key="label.id"
+            :color="label.color"
+            @click="clickLabel(label)"
+          >
+            {{ label.name }}
+          </tv-label>
+        </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import TvLabel from "todovue-label";
+
 export default {
   name: "TvSidebar",
   props: {
@@ -54,14 +72,22 @@ export default {
       type: Boolean,
       default: false,
     },
-    image: {
-      type: Object,
-      default: () => ({}),
+    isLabel: {
+      type: Boolean,
+      default: false,
     },
+  },
+  components: {
+    TvLabel,
   },
   computed: {
     linkComponent() {
       return this.linkTag === "nuxt-link" ? "nuxt-link" : "router-link";
+    },
+  },
+  methods: {
+    clickLabel(label) {
+      this.$emit("clickLabel", label);
     },
   },
 };
@@ -158,5 +184,12 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.container .sidebar .sidebar-content-label {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  gap: 5px;
 }
 </style>
