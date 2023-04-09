@@ -1,6 +1,6 @@
 {
   "name": "todovue-sidebar",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": false,
   "main": "dist/tvsidebar.common.js",
   "author": "Cristhian Daza",
