@@ -1,39 +1,27 @@
 <template>
-  <tv-demo hideBackground>
-    <div v-for="demo in sidebarItemsDemo" :key="demo.id" class="demo">
-      <h2>{{ demo.demoTitle }}</h2>
-      <tv-sidebar
-        :is-list="demo.sidebarProps.isList"
-        :is-image="demo.sidebarProps.isImage"
-        :is-label="demo.sidebarProps.isLabel"
-        :data="demo"
-        @clickLabel="clickLabelDemo"
-      />
-    </div>
-  </tv-demo>
+  <tv-demo hideBackground :component="component" :variants="demos"></tv-demo>
 </template>
 
 <script>
+import { defineComponent, shallowRef } from "vue";
 import TvSidebar from "@/component/TvSidebar.vue";
 import TvDemo from "todovue-demo";
-import { sidebarItemsDemo } from "@/utils/mocks.js";
-export default {
-  name: "DemoPage",
-  data() {
+import { demos } from "@/utils/mocks.js";
+
+export default defineComponent({
+  name: "DemoSidebar",
+  setup() {
+    const component = shallowRef(TvSidebar);
+
     return {
-      sidebarItemsDemo,
+      component,
+      demos,
     };
   },
   components: {
-    TvSidebar,
     TvDemo,
   },
-  methods: {
-    clickLabelDemo(label) {
-      console.log(label);
-    },
-  },
-};
+});
 </script>
 
-<style></style>
+<style lang="scss"></style>

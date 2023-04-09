@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TvButton Component should matches snapshot 1`] = `
+<div class="tv-sidebar-body">
+  <div class="tv-sidebar">
+    <div class="tv-sidebar-title">
+      <h1></h1>
+      <div class="tv-sidebar-title-separator"></div>
+    </div>
+    <div class="tv-sidebar-content"></div>
+  </div>
+</div>
+`;
