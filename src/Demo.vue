@@ -1,14 +1,14 @@
 <template>
-  <tv-demo hideBackground :component="component" :variants="demos"></tv-demo>
+  <tv-demo hideBackground :component="component" :variants="demos" />
 </template>
 
 <script>
-import { defineComponent, shallowRef } from "vue";
+import { shallowRef } from "vue";
 import TvSidebar from "@/component/TvSidebar.vue";
 import TvDemo from "todovue-demo";
 import { demos } from "@/utils/mocks.js";
 
-export default defineComponent({
+export default {
   name: "DemoSidebar",
   setup() {
     const component = shallowRef(TvSidebar);
@@ -21,7 +21,7 @@ export default defineComponent({
   components: {
     TvDemo,
   },
-});
+};
 </script>
 
-<style lang="scss"></style>
+<style></style>

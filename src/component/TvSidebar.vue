@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import TvLabel from "todovue-label";
 
 export default {
@@ -88,21 +89,28 @@ export default {
   components: {
     TvLabel,
   },
-  computed: {
-    linkComponent() {
-      return this.linkTag === "nuxt-link" ? "nuxt-link" : "router-link";
-    },
+  setup(props, { emit }) {
+    const linkComponent = computed(() =>
+      props.linkTag === "nuxt-link" ? "nuxt-link" : "router-link"
+    );
+
+    const limitedList = (property) => {
+      if (!props.data[property]) return [];
+      const limit = props.limit > 0 ? props.limit : props.data[property].length;
+      return props.data[property].slice(0, limit);
+    };
+
+    const clickLabel = (label) => {
+      emit("clickLabel", label);
+    };
+
+    return {
+      linkComponent,
+      limitedList,
+      clickLabel,
+    };
   },
-  methods: {
-    clickLabel(label) {
-      this.$emit("clickLabel", label);
-    },
-    limitedList(property) {
-      if (!this.data[property]) return [];
-      let limit = this.limit > 0 ? this.limit : this.data[property].length;
-      return this.data[property].slice(0, limit);
-    },
-  },
+  emits: ["clickLabel"],
 };
 </script>
 
