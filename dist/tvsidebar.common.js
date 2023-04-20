@@ -131,28 +131,29 @@
     var setPublicPath = null;
     ; // CONCATENATED MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
     var external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject = __webpack_require__(797);
-    ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvLabel.vue?vue&type=template&id=499bd824
+    ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvLabel.vue?vue&type=template&id=302ed2f0
 
     function render(_ctx, _cache, $props, $setup, $data, $options) {
       return (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("div", {
         class: "tv-label",
         style: (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeStyle)({
-          backgroundColor: $options.colorWithOpacity,
+          backgroundColor: $setup.colorWithOpacity,
           border: `2px solid ${$props.color}`
         }),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.handleClick && $options.handleClick(...args))
-      }, [!$props.text ? (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderSlot)(_ctx.$slots, "default", {
+        onClick: _cache[0] || (_cache[0] = (...args) => $setup.handleClick && $setup.handleClick(...args))
+      }, [!$props.textLabel ? (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderSlot)(_ctx.$slots, "default", {
         key: 0
-      }) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.text ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, {
+      }) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.textLabel ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, {
         key: 1
-      }, [(0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createTextVNode)((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.text), 1)], 64)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.isEdit || $props.isRemove ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("i", {
+      }, [(0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createTextVNode)((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.textLabel), 1)], 64)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.isEdit || $props.isRemove ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("i", {
         key: 2,
         class: (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(["tv-label-icon", `tv-icon-position-${$props.iconPosition} tv-icon-${$props.isEdit ? 'edit' : 'remove'}`])
       }, null, 2)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)], 4);
     }
-    ; // CONCATENATED MODULE: ./src/component/TvLabel.vue?vue&type=template&id=499bd824
+    ; // CONCATENATED MODULE: ./src/component/TvLabel.vue?vue&type=template&id=302ed2f0
 
     ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvLabel.vue?vue&type=script&lang=js
+
     /* harmony default export */
     var TvLabelvue_type_script_lang_js = {
       name: "TvLabel",
@@ -173,25 +174,30 @@
           type: String,
           default: "right"
         },
-        text: {
+        textLabel: {
           type: String,
           default: ""
         }
       },
-      computed: {
-        colorWithOpacity() {
-          if (!this.color) {
+      setup(props, {
+        emit
+      }) {
+        const colorWithOpacity = (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
+          if (!props.color) {
             return "";
           }
-          const color = this.color.substring(1);
+          const color = props.color.substring(1);
           return `rgba(${parseInt(color.substring(0, 2), 16)}, ${parseInt(color.substring(2, 4), 16)}, ${parseInt(color.substring(4, 6), 16)}, 0.4)`;
-        }
+        });
+        const handleClick = () => {
+          emit("click", {});
+        };
+        return {
+          colorWithOpacity,
+          handleClick
+        };
       },
-      methods: {
-        handleClick() {
-          this.$emit("click");
-        }
-      }
+      emits: ["click"]
     };
     ; // CONCATENATED MODULE: ./src/component/TvLabel.vue?vue&type=script&lang=js
 
@@ -336,7 +342,7 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(797);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvSidebar.vue?vue&type=template&id=69213c21
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvSidebar.vue?vue&type=template&id=901121a2
 
 const _hoisted_1 = {
   class: "tv-sidebar-body"
@@ -371,7 +377,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_tv_label = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("tv-label");
   return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("div", _hoisted_1, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_2, [$props.isImage ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, {
     key: 0
-  }, [$props.clickable ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)($options.linkComponent), {
+  }, [$props.clickable ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)($setup.linkComponent), {
     key: 0,
     to: $props.data.image.link
   }, {
@@ -389,22 +395,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: $props.data.image.alt
   }, null, 8, _hoisted_4))], 64)) : $props.isLabel ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, {
     key: 1
-  }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_5, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("h1", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.data.title), 1), _hoisted_6]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_7, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)($options.limitedList('labels'), label => {
+  }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_5, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("h1", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.data.title), 1), _hoisted_6]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_7, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)($setup.limitedList('labels'), label => {
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_tv_label, {
       key: label.id,
       color: label.color,
-      onClick: $event => $options.clickLabel(label)
+      onClick: $event => $setup.clickLabel(label)
     }, {
       default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(label.name), 1)]),
       _: 2
     }, 1032, ["color", "onClick"]);
   }), 128))])], 64)) : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, {
     key: 2
-  }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_8, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("h1", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.data.title), 1), _hoisted_9]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_10, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)($options.limitedList('list'), (item, index) => {
+  }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_8, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("h1", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.data.title), 1), _hoisted_9]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_10, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)($setup.limitedList('list'), (item, index) => {
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("ol", {
       class: "tv-sidebar-content-ol",
       key: item.id
-    }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("li", _hoisted_11, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)($options.linkComponent), {
+    }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("li", _hoisted_11, [((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)($setup.linkComponent), {
       to: item.link,
       class: "pointer"
     }, {
@@ -413,12 +419,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 1032, ["to"]))])]);
   }), 128))])], 64))])]);
 }
-;// CONCATENATED MODULE: ./src/component/TvSidebar.vue?vue&type=template&id=69213c21
+;// CONCATENATED MODULE: ./src/component/TvSidebar.vue?vue&type=template&id=901121a2
 
 // EXTERNAL MODULE: ./node_modules/todovue-label/dist/tvlabel.common.js
 var tvlabel_common = __webpack_require__(346);
 var tvlabel_common_default = /*#__PURE__*/__webpack_require__.n(tvlabel_common);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvSidebar.vue?vue&type=script&lang=js
+
 
 /* harmony default export */ var TvSidebarvue_type_script_lang_js = ({
   name: "TvSidebar",
@@ -451,21 +458,25 @@ var tvlabel_common_default = /*#__PURE__*/__webpack_require__.n(tvlabel_common);
   components: {
     TvLabel: (tvlabel_common_default())
   },
-  computed: {
-    linkComponent() {
-      return this.linkTag === "nuxt-link" ? "nuxt-link" : "router-link";
-    }
+  setup(props, {
+    emit
+  }) {
+    const linkComponent = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => props.linkTag === "nuxt-link" ? "nuxt-link" : "router-link");
+    const limitedList = property => {
+      if (!props.data[property]) return [];
+      const limit = props.limit > 0 ? props.limit : props.data[property].length;
+      return props.data[property].slice(0, limit);
+    };
+    const clickLabel = label => {
+      emit("clickLabel", label);
+    };
+    return {
+      linkComponent,
+      limitedList,
+      clickLabel
+    };
   },
-  methods: {
-    clickLabel(label) {
-      this.$emit("clickLabel", label);
-    },
-    limitedList(property) {
-      if (!this.data[property]) return [];
-      let limit = this.limit > 0 ? this.limit : this.data[property].length;
-      return this.data[property].slice(0, limit);
-    }
-  }
+  emits: ["clickLabel"]
 });
 ;// CONCATENATED MODULE: ./src/component/TvSidebar.vue?vue&type=script&lang=js
  
