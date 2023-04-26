@@ -1,5 +1,11 @@
 # Changelog **TODOvue Sidebar**
 
+## v2.2.0
+### Dependencies Update
+* Update `todovue-css` to version 1.7.0
+* Update `todovue-demo` to version 2.3.0
+* Update `todovue-label` to version 2.2.0
+
 ## v2.1.0
 ### Dependencies Update
 * Update `todovue-css` to version 1.3.0
